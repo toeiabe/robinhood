@@ -17,7 +17,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   late Timer _timer;
   int _start = 10;
-  bool isLock = false; //เดะมาแก้
+  bool isLock = true;
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
       (Timer timer) {
         if (_start == 0) {
           setState(() {
-            isLock = false; // เดะมาแก้
+            isLock = true;
           });
         } else {
           setState(() {
