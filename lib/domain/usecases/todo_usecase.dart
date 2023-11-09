@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:robinhood/domain/entities/task_entity.dart';
 import 'package:robinhood/domain/repositories/repository.dart';
 
-import '../../data/failure.dart';
+import 'package:robinhood/data/failure.dart';
 
 class GetTodo {
   final TaskRepository repository;

@@ -67,6 +67,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   }
 
   void _handleUserInteraction() {
+    print("Hello");
     setState(() {
       _start = 10;
     });
@@ -75,34 +76,35 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     if (!isLock) {
-      return GestureDetector(
-        onTap: () => _handleUserInteraction(),
-        onScaleUpdate: (details) => _handleUserInteraction(),
-        onLongPress: () => _handleUserInteraction,
-        onDoubleTap: () => _handleUserInteraction(),
-        child: DefaultTabController(
+      return DefaultTabController(
           length: 3,
-          child: Scaffold(
-            appBar: AppBar(
-              bottom: const TabBar(
-                tabs: <Widget>[
-                  Tab(
-                    text: "to-do",
-                  ),
-                  Tab(
-                    text: "doing",
-                  ),
-                  Tab(
-                    text: "done",
-                  ),
-                ],
+          child: Listener(
+            onPointerMove: (opm) {
+              _handleUserInteraction();
+            },
+            onPointerUp: (opm) {
+              _handleUserInteraction();
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                bottom: const TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      text: "to-do",
+                    ),
+                    Tab(
+                      text: "doing",
+                    ),
+                    Tab(
+                      text: "done",
+                    ),
+                  ],
+                ),
               ),
+              body: const TabBarView(
+                  children: [TodoScreen(), DoingScreen(), DoneScreen()]),
             ),
-            body: const TabBarView(
-                children: [TodoScreen(), DoingScreen(), DoneScreen()]),
-          ),
-        ),
-      );
+          ));
     } else {
       return ScreenLock(
           correctString: "123456",

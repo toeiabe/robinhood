@@ -1,6 +1,6 @@
 import 'package:robinhood/domain/entities/task_entity.dart';
 
-import '../../data/failure.dart';
+import 'package:robinhood/data/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class TaskRepository {

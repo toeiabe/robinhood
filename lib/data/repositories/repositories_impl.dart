@@ -14,36 +14,36 @@ class TaskRepositoryImpl implements TaskRepository {
   TaskRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, List<TaskEntity>?>> getTodo(int offset) async {
+  Future<Either<Failure, List<TaskEntity>>> getTodo(int offset) async {
     try {
       final result = await remoteDataSource.getTodo(offset);
-      return Right(result.tasks?.map((e) => e.toEntity()).toList());
+      return Right(result.tasks.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return const Left(ServerFailure(''));
+      return const Left(ServerFailure('An error has occurred'));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
   @override
-  Future<Either<Failure, List<TaskEntity>?>> getDoing(int offset) async {
+  Future<Either<Failure, List<TaskEntity>>> getDoing(int offset) async {
     try {
       final result = await remoteDataSource.getDoing(offset);
-      return Right(result.tasks?.map((e) => e.toEntity()).toList());
+      return Right(result.tasks.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return const Left(ServerFailure(''));
+      return const Left(ServerFailure('An error has occurred'));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
   @override
-  Future<Either<Failure, List<TaskEntity>?>> getDone(int offset) async {
+  Future<Either<Failure, List<TaskEntity>>> getDone(int offset) async {
     try {
       final result = await remoteDataSource.getDone(offset);
-      return Right(result.tasks?.map((e) => e.toEntity()).toList());
+      return Right(result.tasks.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return const Left(ServerFailure(''));
+      return const Left(ServerFailure('An error has occurred'));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
     }

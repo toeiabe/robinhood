@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../data/model/todo_model.dart';
+import 'package:robinhood/data/model/todo_model.dart';
 
 class TaskEntity extends Equatable {
   final String id;
@@ -14,5 +14,5 @@ class TaskEntity extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [id, title, description, createdAt, status];
+  List<Object?> get props => [id];
 }
